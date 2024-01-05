@@ -1,0 +1,77 @@
+﻿
+@model sql_deneme.ViewModels.OrdersViewModel
+
+<div>
+    <h3>Orders</h3>
+    <p>
+        <a asp-controller="Orders" asp-action="Create" class="btn btn-primary">Create New Order</a>
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>OrderID</th>
+                <th>OrderDate</th>
+                <th>CustomerID</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var order in Model.Orders)
+            {
+                <tr>
+                    <td>@order.OrderId</td>
+                    <td>@order.OrderDate</td>
+                    <td>@order.CustomerId</td>
+                    <td>
+                        <a asp-controller="Orders" asp-action="Details" asp-route-id="@order.OrderId" class="btn btn-info">Details</a>
+                        <a asp-controller="Orders" asp-action="Edit" asp-route-id="@order.OrderId" class="btn btn-warning">Edit</a>
+                        <a asp-controller="Orders" asp-action="Delete" asp-route-id="@order.OrderId" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<div>
+    <h3>Order Details</h3>
+    <p>
+        <a asp-controller="OrderDetails" asp-action="Create" class="btn btn-primary">Create New Order Detail</a>
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>OrderDetailId</th>
+                <th>OrderId</th>
+                <th>ProductId</th>
+                <th>Quantity</th>
+                <th>UnitPrice</th>
+             
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var detail in Model.OrderDetails)
+            {
+                <tr>
+                    <td>@detail.OrderDetailId</td>
+                    <td>@detail.OrderId</td>
+                    <td>@detail.ProductId</td>
+                    <td>@detail.Quantity</td>
+                    <td>@detail.UnitPrice</td>
+                    <td>
+                        <a asp-controller="OrderDetails" asp-action="Details" asp-route-id="@detail.OrderDetailId" class="btn btn-info">Details</a>
+                        <a asp-controller="OrderDetails" asp-action="Edit" asp-route-id="@detail.OrderDetailId" class="btn btn-warning">Edit</a>
+                        <a asp-controller="OrderDetails" asp-action="Delete" asp-route-id="@detail.OrderDetailId" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+
+

@@ -1,0 +1,37 @@
+﻿@model IEnumerable<sql_deneme.Models.StockMovement >
+<h1> Stock Movement</h1>
+<p>
+    <a asp-controller="StockMovements"   asp-action ="Create"  class="btn btn-primary " > Create New Stock Movement </a>   
+    </a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>StockMovementId </th>
+            <th>ProductId </th>
+            <th>Quantity</th>
+            <th>MovementDate</th>
+        </tr>
+        <thead/>
+    <tbody>
+        @foreach (var stockmovement in Model)
+            {
+                <tr>
+                <td>@stockmovement.StockMovementId</td>
+                <td>@stockmovement.ProductId</td>
+                <td>@stockmovement.Quantity</td>
+                <td>@stockmovement.MovementDate</td>
+               
+                <td>
+                    <a asp-controller="StockMovement" asp-action="Edit" asp-route-id="@stockmovement.StockMovementId" class="btn btn-primary">Edit</a>
+                    <a asp-controller="StockMovement" asp-action="Details" asp-route-id="@stockmovement.StockMovementId" class="btn btn-info">Details</a>
+                    <a asp-controller="StockMovement" asp-action="Delete" asp-route-id="@stockmovement.StockMovementId" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+            }
+    </tbody>
+</table>
+
+
+
